@@ -650,29 +650,49 @@ function initCheckout() {
   });
 }
 
+const mockProfileDesigns = [
+  { name: "Teal Elegance", date: "Saved on May 12, 2024", theme: "thumb-teal" },
+  { name: "Lemon Dream", date: "Saved on Apr 28, 2024", theme: "thumb-lemon" },
+  { name: "Ivory Bliss", date: "Saved on Apr 15, 2024", theme: "thumb-ivory" },
+  { name: "Ocean Breeze", date: "Saved on Mar 30, 2024", theme: "thumb-ocean" },
+  { name: "Minimal Chic", date: "Saved on Mar 18, 2024", theme: "thumb-minimal" },
+];
+
+function renderProfileDesigns(target) {
+  const designs = savedDesigns();
+  const cards = designs.length
+    ? designs.map((item, index) => ({
+        name: item.name,
+        date: `${formatUsd(item.estimate.usd)} estimated quote`,
+        detail: designSummary(item.design),
+        theme: ["thumb-teal", "thumb-lemon", "thumb-ivory", "thumb-ocean", "thumb-minimal"][index % 5],
+      }))
+    : mockProfileDesigns;
+
+  target.innerHTML = cards
+    .map(
+      (item) => `
+        <article class="profile-design-card">
+          <span class="profile-design-thumb ${item.theme}" aria-hidden="true"></span>
+          <strong>${escapeHtml(item.name)}</strong>
+          <small>${escapeHtml(item.date)}</small>
+          ${item.detail ? `<span>${escapeHtml(item.detail)}</span>` : ""}
+        </article>
+      `
+    )
+    .join("");
+}
+
 function initProfile() {
   const target = document.querySelector("#savedDesigns");
   if (!target) return;
-  const designs = savedDesigns();
-  if (!designs.length) {
-    target.textContent = "No design saved yet.";
-  } else {
-    target.innerHTML = designs
-      .map(
-        (item) => `
-          <div class="saved-design">
-            <strong>${escapeHtml(item.name)}</strong>
-            <span>${escapeHtml(designSummary(item.design))}</span>
-            <span>${formatUsd(item.estimate.usd)}</span>
-          </div>
-        `
-      )
-      .join("");
-  }
+  renderProfileDesigns(target);
 
   document.querySelector("#clearSaved")?.addEventListener("click", () => {
     writeJson(SAVED_KEY, []);
-    target.textContent = "Saved demo designs cleared.";
+    renderProfileDesigns(target);
+    const status = document.querySelector("#savedDesignsStatus");
+    if (status) status.textContent = "Saved demo designs reset to the mock profile examples.";
   });
 }
 

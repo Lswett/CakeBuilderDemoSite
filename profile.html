@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mock Profile | CakeBuilder Demo</title>
     <meta name="description" content="Mock customer profile and saved cake design data for CakeBuilder Demo." />
-    <link rel="stylesheet" href="styles.css?v=20260608-nav" />
+    <link rel="stylesheet" href="styles.css?v=20260608-profile" />
   </head>
   <body data-page="profile">
     <header class="site-header">
@@ -36,7 +36,6 @@
             </summary>
             <div class="account-popover">
               <a aria-current="page" href="profile.html">Profile</a>
-              <a href="profile.html#savedDesigns">Saved designs</a>
             </div>
           </details>
         </div>
@@ -52,46 +51,226 @@
             <a href="builder.html">Cake Designer</a>
             <a href="checkout.html">Checkout <span class="cart-count menu-count">0</span></a>
             <a aria-current="page" href="profile.html">Profile</a>
-            <a href="profile.html#savedDesigns">Saved designs</a>
           </nav>
         </details>
       </div>
     </header>
 
-    <main class="page-shell">
-      <section class="profile-hero">
-        <div class="profile-card hero-card">
-          <div class="avatar">F</div>
-          <div>
-            <p class="eyebrow">Test feature</p>
-            <h1>Faeye The Wise</h1>
-            <p>Demo celebration planner</p>
-          </div>
-          <span class="status-pill">Mock customer</span>
-        </div>
-      </section>
+    <main class="profile-dashboard-page">
+      <div class="profile-dashboard">
+        <details class="profile-mobile-sections">
+          <summary>
+            <span aria-hidden="true"></span>
+            Profile menu
+          </summary>
+          <nav aria-label="Profile mobile sections">
+            <a href="#profile-overview">Profile Overview</a>
+            <a href="#preferences">Preferences</a>
+            <a href="#contact-delivery">Contacts & Addresses</a>
+            <a href="#saved-designs">Saved Designs</a>
+            <a href="#order-history">Order History</a>
+            <a href="#receipts">Receipts</a>
+            <a href="#account-settings">Account Settings</a>
+          </nav>
+        </details>
 
-      <section class="profile-layout">
-        <article class="data-panel">
-          <h2>Saved preferences</h2>
-          <p>Low sweetness, lemon cream, ivory-teal palette, no peanut garnish. These are mock fields for a future account system.</p>
-        </article>
-        <article class="data-panel">
-          <h2>Contact shell</h2>
-          <p>Demo delivery area: Bangkok. Real names, addresses, and phone numbers would stay hidden until login is built.</p>
-        </article>
-        <article class="data-panel">
-          <h2>Saved designs</h2>
-          <div id="savedDesigns">No design saved yet.</div>
-          <button class="secondary-action full" id="clearSaved" type="button">Clear saved demos</button>
-        </article>
-        <article class="data-panel">
-          <h2>Test order history</h2>
-          <p>3 mock requests, 1 draft quote, 0 real payments.</p>
-        </article>
-      </section>
+        <aside class="profile-sidebar" aria-label="Profile sections">
+          <nav class="profile-side-nav">
+            <a aria-current="page" href="#profile-overview">
+              <span class="profile-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 7h8M8 12h5M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" /></svg>
+              </span>
+              Profile Overview
+            </a>
+            <a href="#preferences">
+              <span class="profile-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 5v4M8 15v4" /></svg>
+              </span>
+              Preferences
+            </a>
+            <a href="#contact-delivery">
+              <span class="profile-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11Z" /><path d="M12 10.5h.01" /></svg>
+              </span>
+              Contacts & Addresses
+            </a>
+            <a href="#saved-designs">
+              <span class="profile-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M6 4h12a2 2 0 0 1 2 2v14l-8-4-8 4V6a2 2 0 0 1 2-2Z" /></svg>
+              </span>
+              Saved Designs
+            </a>
+            <a href="#order-history">
+              <span class="profile-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 7h13M7 12h13M7 17h13M4 7h.01M4 12h.01M4 17h.01" /></svg>
+              </span>
+              Order History
+            </a>
+            <a href="#receipts">
+              <span class="profile-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 3h10v18l-2-1.3-2 1.3-2-1.3-2 1.3-2-1.3-2 1.3V5a2 2 0 0 1 2-2Z" /><path d="M9 8h6M9 12h6M9 16h3" /></svg>
+              </span>
+              Receipts
+            </a>
+            <a href="#account-settings">
+              <span class="profile-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" /><path d="M3 12h2m14 0h2M12 3v2m0 14v2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4" /></svg>
+              </span>
+              Account Settings
+            </a>
+            <a href="index.html">
+              <span class="profile-nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5M15 12H3M21 4v16" /></svg>
+              </span>
+              Logout
+            </a>
+          </nav>
+          <article class="profile-sidebar-cta">
+            <span aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" /></svg>
+            </span>
+            <h2>Create something beautiful</h2>
+            <p>Design the next cake with the guided Cake Designer.</p>
+            <a class="primary-button full" href="builder.html">Go to Cake Designer</a>
+          </article>
+        </aside>
+
+        <section class="profile-main" aria-label="Profile overview">
+          <section class="profile-summary-card" id="profile-overview">
+            <div class="profile-avatar" aria-hidden="true">FW</div>
+            <div class="profile-summary-copy">
+              <p class="eyebrow">Test feature</p>
+              <h1>Faeye The Wise</h1>
+              <p>Welcome back. This mock profile previews preferences, saved cake ideas, and order history for a future account system.</p>
+            </div>
+            <button class="secondary-action profile-edit-button" type="button">Edit Profile</button>
+          </section>
+
+          <section class="profile-card-grid">
+            <article class="profile-panel" id="preferences">
+              <div class="profile-panel-heading">
+                <span class="profile-panel-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 5v4M8 15v4" /></svg>
+                </span>
+                <h2>Preferences</h2>
+              </div>
+              <div class="preference-list">
+                <div>
+                  <span class="preference-icon">LS</span>
+                  <div><strong>Low sweetness</strong><small>You prefer less sweet cakes</small></div>
+                </div>
+                <div>
+                  <span class="preference-icon lemon">LC</span>
+                  <div><strong>Lemon cream</strong><small>Favorite flavor</small></div>
+                </div>
+                <div>
+                  <span class="preference-icon palette">IT</span>
+                  <div><strong>Ivory-teal palette</strong><small>Preferred color palette</small></div>
+                </div>
+                <div>
+                  <span class="preference-icon avoid">NP</span>
+                  <div><strong>No peanut garnish</strong><small>Allergy / avoid</small></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="profile-panel" id="contact-delivery">
+              <div class="profile-panel-heading">
+                <span class="profile-panel-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M21 10c0 5.5-9 11-9 11S3 15.5 3 10a9 9 0 1 1 18 0Z" /><path d="M12 10h.01" /></svg>
+                </span>
+                <h2>Contact & Delivery</h2>
+              </div>
+              <dl class="contact-list">
+                <div><dt>Phone</dt><dd>+1 (555) 123-4567</dd></div>
+                <div><dt>Email</dt><dd>faeye@example.com</dd></div>
+                <div><dt>Default Delivery Point</dt><dd>123 Cake Lane<br />Sweet City, CA 90210<br />United States</dd></div>
+              </dl>
+              <button class="secondary-action profile-manage-button" type="button">Manage Addresses</button>
+            </article>
+          </section>
+
+          <section class="profile-panel profile-section-panel" id="saved-designs">
+            <div class="profile-section-header">
+              <div class="profile-panel-heading">
+                <span class="profile-panel-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M6 4h12a2 2 0 0 1 2 2v14l-8-4-8 4V6a2 2 0 0 1 2-2Z" /></svg>
+                </span>
+                <h2>Saved Designs</h2>
+              </div>
+              <button class="link-button" id="clearSaved" type="button">Reset saved demos</button>
+            </div>
+            <div class="saved-design-gallery" id="savedDesigns" aria-live="polite"></div>
+            <p class="profile-status" id="savedDesignsStatus"></p>
+          </section>
+
+          <section class="profile-panel profile-section-panel" id="order-history">
+            <div class="profile-section-header">
+              <div class="profile-panel-heading">
+                <span class="profile-panel-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M7 7h13M7 12h13M7 17h13M4 7h.01M4 12h.01M4 17h.01" /></svg>
+                </span>
+                <h2>Order History</h2>
+              </div>
+              <a class="link-button" href="checkout.html">View all orders</a>
+            </div>
+            <div class="profile-table-wrap">
+              <table class="order-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Cake</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Receipt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#ORD-1004</td>
+                    <td>May 20, 2024</td>
+                    <td><span class="order-cake-thumb thumb-teal" aria-hidden="true"></span> Teal Elegance<br /><small>8 inch, vanilla</small></td>
+                    <td><span class="delivered-pill">Delivered</span></td>
+                    <td>$75</td>
+                    <td><button class="receipt-button" type="button" aria-label="Open receipt for order 1004">View</button></td>
+                  </tr>
+                  <tr>
+                    <td>#ORD-1003</td>
+                    <td>Apr 28, 2024</td>
+                    <td><span class="order-cake-thumb thumb-lemon" aria-hidden="true"></span> Lemon Dream<br /><small>6 inch, lemon</small></td>
+                    <td><span class="delivered-pill">Delivered</span></td>
+                    <td>$55</td>
+                    <td><button class="receipt-button" type="button" aria-label="Open receipt for order 1003">View</button></td>
+                  </tr>
+                  <tr>
+                    <td>#ORD-1002</td>
+                    <td>Apr 10, 2024</td>
+                    <td><span class="order-cake-thumb thumb-ivory" aria-hidden="true"></span> Ivory Bliss<br /><small>8 inch, vanilla</small></td>
+                    <td><span class="delivered-pill">Delivered</span></td>
+                    <td>$70</td>
+                    <td><button class="receipt-button" type="button" aria-label="Open receipt for order 1002">View</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="secondary-action profile-history-button" href="checkout.html">View Full Order History</a>
+          </section>
+
+          <section class="profile-panel profile-small-panels" id="receipts">
+            <div>
+              <h2>Receipts</h2>
+              <p>Receipt downloads are mocked until real order storage is connected.</p>
+            </div>
+            <div id="account-settings">
+              <h2>Account Settings</h2>
+              <p>Login, notification, and profile settings can plug into this area later.</p>
+            </div>
+          </section>
+        </section>
+      </div>
     </main>
 
-    <script src="app.js?v=20260608-nav"></script>
+    <script src="app.js?v=20260608-profile"></script>
   </body>
 </html>
