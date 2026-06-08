@@ -683,10 +683,37 @@ function renderProfileDesigns(target) {
     .join("");
 }
 
+function showComingSoonToast() {
+  let toast = document.querySelector("#comingSoonToast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "comingSoonToast";
+    toast.className = "coming-soon-toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    document.body.append(toast);
+  }
+
+  toast.textContent = "Coming soon";
+  toast.classList.remove("show");
+  void toast.offsetWidth;
+  toast.classList.add("show");
+}
+
+function initComingSoonActions() {
+  document.querySelectorAll("[data-coming-soon]").forEach((control) => {
+    control.addEventListener("click", (event) => {
+      event.preventDefault();
+      showComingSoonToast();
+    });
+  });
+}
+
 function initProfile() {
   const target = document.querySelector("#savedDesigns");
   if (!target) return;
   renderProfileDesigns(target);
+  initComingSoonActions();
 
   document.querySelector("#clearSaved")?.addEventListener("click", () => {
     writeJson(SAVED_KEY, []);
