@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mock Checkout | CakeBuilder Demo</title>
     <meta name="description" content="Review mock CakeBuilder Demo cart items and request a test order." />
-    <link rel="stylesheet" href="styles.css?v=20260608-actions" />
+    <link rel="stylesheet" href="styles.css?v=20260608-checkout" />
   </head>
   <body data-page="checkout">
     <header class="site-header">
@@ -56,32 +56,38 @@
       </div>
     </header>
 
-    <main class="page-shell">
-      <section class="page-heading">
-        <p class="eyebrow">Mock checkout</p>
-        <h1>Review the cake request.</h1>
-        <p>No payment or backend is connected. This page is a realistic shell for the order review step.</p>
-      </section>
-
-      <section class="checkout-grid">
-        <div class="checkout-list" id="checkoutItems">
-          <p class="empty-cart">No cakes yet. Build a custom cake and it will appear here.</p>
+    <main class="checkout-flow-page">
+      <section class="checkout-flow-shell" aria-labelledby="checkoutTitle">
+        <div class="checkout-flow-heading">
+          <p class="eyebrow">Mock checkout</p>
+          <h1 id="checkoutTitle">Complete your cake request.</h1>
+          <p>
+            A guided demo checkout for reviewing contact details, delivery timing, cake selections,
+            and a simulated payment result.
+          </p>
         </div>
 
-        <aside class="checkout-summary">
-          <h2>Quote summary</h2>
-          <div class="summary-line"><span>Items</span><strong id="summaryItems">0</strong></div>
-          <div class="summary-line"><span>USD estimate</span><strong id="summaryUsd">$0</strong></div>
-          <div class="summary-line"><span>Prep time</span><strong id="summaryPrep">0 hrs</strong></div>
-          <label>Preferred date <input type="date" id="preferredDate" /></label>
-          <label>Order notes <textarea id="orderNotes" rows="5" placeholder="Mock notes for future backend handoff"></textarea></label>
-          <button class="primary-button full" id="requestButton" type="button">Create test request</button>
-          <button class="secondary-action full" id="clearCart" type="button">Clear demo cart</button>
-          <p class="mock-note" id="requestStatus">This button only creates a visual confirmation.</p>
-        </aside>
+        <nav class="checkout-stepper-wrap" aria-label="Checkout progress">
+          <ol class="checkout-stepper" id="checkoutStepper"></ol>
+        </nav>
+
+        <details class="checkout-mobile-summary">
+          <summary>
+            <span>Order summary</span>
+            <strong id="mobileSummaryTotal">$0</strong>
+          </summary>
+          <div id="orderSummaryMobile"></div>
+        </details>
+
+        <section class="checkout-flow-grid">
+          <section class="checkout-step-card" id="checkoutStepContent" aria-live="polite"></section>
+          <aside class="checkout-order-summary" aria-label="Order summary">
+            <div id="orderSummaryDesktop"></div>
+          </aside>
+        </section>
       </section>
     </main>
 
-    <script src="app.js?v=20260608-actions"></script>
+    <script src="app.js?v=20260608-checkout"></script>
   </body>
 </html>

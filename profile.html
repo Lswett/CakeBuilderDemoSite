@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mock Profile | CakeBuilder Demo</title>
     <meta name="description" content="Mock customer profile and saved cake design data for CakeBuilder Demo." />
-    <link rel="stylesheet" href="styles.css?v=20260608-actions" />
+    <link rel="stylesheet" href="styles.css?v=20260608-checkout" />
   </head>
   <body data-page="profile">
     <header class="site-header">
@@ -226,32 +226,7 @@
                     <th scope="col">Receipt</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>#ORD-1004</td>
-                    <td>May 20, 2024</td>
-                    <td><span class="order-cake-thumb thumb-teal" aria-hidden="true"></span> Teal Elegance<br /><small>8 inch, vanilla</small></td>
-                    <td><span class="delivered-pill">Delivered</span></td>
-                    <td>$75</td>
-                    <td><button class="receipt-button" type="button" aria-label="Open receipt for order 1004" data-coming-soon>View</button></td>
-                  </tr>
-                  <tr>
-                    <td>#ORD-1003</td>
-                    <td>Apr 28, 2024</td>
-                    <td><span class="order-cake-thumb thumb-lemon" aria-hidden="true"></span> Lemon Dream<br /><small>6 inch, lemon</small></td>
-                    <td><span class="delivered-pill">Delivered</span></td>
-                    <td>$55</td>
-                    <td><button class="receipt-button" type="button" aria-label="Open receipt for order 1003" data-coming-soon>View</button></td>
-                  </tr>
-                  <tr>
-                    <td>#ORD-1002</td>
-                    <td>Apr 10, 2024</td>
-                    <td><span class="order-cake-thumb thumb-ivory" aria-hidden="true"></span> Ivory Bliss<br /><small>8 inch, vanilla</small></td>
-                    <td><span class="delivered-pill">Delivered</span></td>
-                    <td>$70</td>
-                    <td><button class="receipt-button" type="button" aria-label="Open receipt for order 1002" data-coming-soon>View</button></td>
-                  </tr>
-                </tbody>
+                <tbody id="orderHistoryRows"></tbody>
               </table>
             </div>
             <a class="secondary-action profile-history-button" href="checkout.html" data-coming-soon>View Full Order History</a>
@@ -271,6 +246,6 @@
       </div>
     </main>
 
-    <script src="app.js?v=20260608-actions"></script>
+    <script src="app.js?v=20260608-checkout"></script>
   </body>
 </html>
