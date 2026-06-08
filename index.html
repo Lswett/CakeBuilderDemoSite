@@ -8,7 +8,7 @@
       name="description"
       content="CakeBuilder Demo is a polished static prototype with a guided cake builder, checkout preview, and mock profile UI."
     />
-    <link rel="stylesheet" href="styles.css?v=20260608-hero" />
+    <link rel="stylesheet" href="styles.css?v=20260608-nav" />
   </head>
   <body data-page="home">
     <header class="site-header">
@@ -18,31 +18,68 @@
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a aria-current="page" href="index.html">Home</a>
-        <a href="builder.html">Build</a>
-        <a href="checkout.html">Checkout</a>
-        <a href="profile.html">Profile</a>
+        <a href="#about">About Us</a>
+        <a href="builder.html">Cake Designer</a>
       </nav>
-      <a class="bag-button" href="checkout.html" aria-label="Open checkout">
-        <span class="cart-count">0</span>
-        Bag
-      </a>
+      <div class="header-actions">
+        <div class="desktop-actions" aria-label="Account and checkout">
+          <a class="icon-button bag-button" href="checkout.html" aria-label="Open checkout">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M6.5 8.5h11l1 11h-13l1-11Z" />
+              <path d="M9 8.5a3 3 0 0 1 6 0" />
+            </svg>
+            <span class="cart-count">0</span>
+          </a>
+          <details class="account-menu">
+            <summary class="icon-button" aria-label="Open account menu">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+                <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+              </svg>
+            </summary>
+            <div class="account-popover">
+              <a href="profile.html">Profile</a>
+              <a href="profile.html#savedDesigns">Saved designs</a>
+            </div>
+          </details>
+        </div>
+        <details class="mobile-menu">
+          <summary class="hamburger-button" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </summary>
+          <nav class="mobile-menu-panel" aria-label="Mobile navigation">
+            <a aria-current="page" href="index.html">Home</a>
+            <a href="#about">About Us</a>
+            <a href="builder.html">Cake Designer</a>
+            <a href="checkout.html">Checkout <span class="cart-count menu-count">0</span></a>
+            <a href="profile.html">Profile</a>
+            <a href="profile.html#savedDesigns">Saved designs</a>
+          </nav>
+        </details>
+      </div>
     </header>
 
     <main>
       <section class="hero hero-home">
         <div class="hero-copy">
           <p class="eyebrow">Something sweet is baking</p>
-          <h1><span>CakeBuilder</span><span>Demo</span></h1>
-          <p>
-            Custom cakes for moments that do not need permission to be celebrated. This mock
-            studio blends premium event design with playful, social-first cakes for weddings,
-            house parties, launches, and everyday wins.
+          <h1>CakeBuilder Demo</h1>
+          <p class="hero-lede">
+            A polished demo storefront for custom cakes, guided cake design, mock quoting, and
+            checkout review. It presents the future product clearly without payment processing or
+            a connected backend.
           </p>
-          <div class="prototype-note">Static product demo: no payment, no backend, no real order submission.</div>
           <div class="hero-actions">
-            <a class="primary-button" href="builder.html">Open cake designer</a>
-            <a class="secondary-button" href="checkout.html">Review mock checkout</a>
+            <a class="primary-button" href="builder.html">Start designing</a>
+            <a class="secondary-button" href="#about">Explore the demo</a>
           </div>
+          <ul class="hero-proof" aria-label="Demo scope">
+            <li>Static prototype</li>
+            <li>USD mock quotes</li>
+            <li>No real order submission</li>
+          </ul>
         </div>
         <div class="poster-cake" aria-hidden="true">
           <img
@@ -55,76 +92,102 @@
         </div>
       </section>
 
-      <section class="intro-band">
-        <div>
-          <p class="eyebrow">Every moment worth celebrating</p>
-          <h2>A cake studio with a design-app ordering flow.</h2>
+      <section class="home-section home-about" id="about">
+        <div class="home-container about-layout">
+          <div class="section-heading">
+            <p class="eyebrow">About Us</p>
+            <h2>A cake-ordering demo built around a simple customer journey.</h2>
+          </div>
+          <div class="section-copy">
+            <p>
+              CakeBuilder Demo shows how a modern custom cake studio could introduce its brand,
+              guide customers through design choices, estimate a quote, and prepare an order
+              review screen before any backend or payment tools are connected.
+            </p>
+            <div class="about-points">
+              <article>
+                <span>01</span>
+                <h3>Guided design</h3>
+                <p>Customers answer focused questions instead of facing a confusing blank canvas.</p>
+              </article>
+              <article>
+                <span>02</span>
+                <h3>Visual preview</h3>
+                <p>The cake designer gives immediate feedback so choices feel tangible.</p>
+              </article>
+              <article>
+                <span>03</span>
+                <h3>Demo-ready flow</h3>
+                <p>Cart, checkout, and profile screens are mocked for a realistic pitch.</p>
+              </article>
+            </div>
+          </div>
         </div>
-        <p>
-          The site is still a prototype, so the writing and data are intentionally easy to
-          replace. The experience is built around a clear funnel: learn the brand, design the
-          cake, review the quote, and submit a mock request when the backend is ready.
-        </p>
       </section>
 
-      <section class="demo-metrics" aria-label="Demo capabilities">
-        <div>
-          <strong>4</strong>
-          <span>static pages</span>
-        </div>
-        <div>
-          <strong>3D</strong>
-          <span>guided preview</span>
-        </div>
-        <div>
-          <strong>USD</strong>
-          <span>mock pricing</span>
-        </div>
-        <div>
-          <strong>0</strong>
-          <span>payment integrations</span>
+      <section class="home-section home-metrics" aria-label="Demo capabilities">
+        <div class="home-container metric-grid">
+          <div>
+            <strong>4</strong>
+            <span>static pages</span>
+          </div>
+          <div>
+            <strong>3D</strong>
+            <span>guided preview</span>
+          </div>
+          <div>
+            <strong>USD</strong>
+            <span>mock pricing</span>
+          </div>
+          <div>
+            <strong>0</strong>
+            <span>payment integrations</span>
+          </div>
         </div>
       </section>
 
-      <section class="process-band" aria-label="Prototype flow">
-        <article>
-          <span>1</span>
-          <h3>Pick the occasion</h3>
-          <p>Wedding, party, or custom starts the questionnaire with preset rules.</p>
-        </article>
-        <article>
-          <span>2</span>
-          <h3>Answer guided questions</h3>
-          <p>Each choice updates a 3D preview and keeps decorations from fighting each other.</p>
-        </article>
-        <article>
-          <span>3</span>
-          <h3>Review a mock quote</h3>
-          <p>USD estimates are generated from tiers, labor, and decoration count.</p>
-        </article>
+      <section class="home-section home-flow" aria-label="Prototype flow">
+        <div class="home-container">
+          <div class="section-heading compact-heading">
+            <p class="eyebrow">How it works</p>
+            <h2>From idea to mock checkout in three steps.</h2>
+          </div>
+          <div class="flow-grid">
+            <article>
+              <span>1</span>
+              <h3>Pick the occasion</h3>
+              <p>Wedding, party, or custom sets the rules and recommended options.</p>
+            </article>
+            <article>
+              <span>2</span>
+              <h3>Design with guardrails</h3>
+              <p>Preset choices keep the experience fast, polished, and easy to explain.</p>
+            </article>
+            <article>
+              <span>3</span>
+              <h3>Review the quote</h3>
+              <p>The cart summarizes estimated price, prep time, and order notes.</p>
+            </article>
+          </div>
+        </div>
       </section>
 
-      <section class="split-story">
-        <div class="section-heading">
-          <p class="eyebrow">What they do</p>
-          <h2>Premium enough for events. Weird enough for the internet.</h2>
-        </div>
-        <div class="story-grid">
-          <article>
-            <span class="feature-chip">01</span>
-            <h3>Custom Builds</h3>
-            <p>Shape, size, finish, color, garnish, message, and complexity are all designed around the customer.</p>
-          </article>
-          <article>
-            <span class="feature-chip">02</span>
-            <h3>Quote Transparency</h3>
-            <p>Mock formulas show material cost, labor complexity, prep time, and pricing in USD.</p>
-          </article>
-          <article>
-            <span class="feature-chip">03</span>
-            <h3>Saved Profiles</h3>
-            <p>Test profile surfaces preferences, allergens, saved designs, and order history for future backend work.</p>
-          </article>
+      <section class="home-section designer-callout">
+        <div class="home-container callout-layout">
+          <div>
+            <p class="eyebrow">Cake Designer</p>
+            <h2>Questionnaire first. Visual payoff immediately.</h2>
+            <p>
+              The designer is intentionally structured so a team can pitch the concept today and
+              later swap in real customer accounts, order forms, and fulfillment logic.
+            </p>
+          </div>
+          <div class="callout-panel" aria-label="Designer highlights">
+            <div><span>Occasions</span><strong>Wedding, party, custom</strong></div>
+            <div><span>Controls</span><strong>Tiers, flavor, colors, decor</strong></div>
+            <div><span>Output</span><strong>3D preview and USD quote</strong></div>
+            <a class="primary-button full" href="builder.html">Open Cake Designer</a>
+          </div>
         </div>
       </section>
 
@@ -136,6 +199,6 @@
       </section>
     </main>
 
-    <script src="app.js?v=20260608-hero"></script>
+    <script src="app.js?v=20260608-nav"></script>
   </body>
 </html>

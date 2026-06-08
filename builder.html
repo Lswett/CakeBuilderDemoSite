@@ -8,7 +8,7 @@
       name="description"
       content="Guided CakeBuilder Demo questionnaire with 3D cake preview, safe decoration placement, and mock quote."
     />
-    <link rel="stylesheet" href="styles.css?v=20260608-hero" />
+    <link rel="stylesheet" href="styles.css?v=20260608-nav" />
   </head>
   <body data-page="builder">
     <header class="site-header">
@@ -18,14 +18,47 @@
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="index.html">Home</a>
-        <a aria-current="page" href="builder.html">Build</a>
-        <a href="checkout.html">Checkout</a>
-        <a href="profile.html">Profile</a>
+        <a href="index.html#about">About Us</a>
+        <a aria-current="page" href="builder.html">Cake Designer</a>
       </nav>
-      <a class="bag-button" href="checkout.html" aria-label="Open checkout">
-        <span class="cart-count">0</span>
-        Bag
-      </a>
+      <div class="header-actions">
+        <div class="desktop-actions" aria-label="Account and checkout">
+          <a class="icon-button bag-button" href="checkout.html" aria-label="Open checkout">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M6.5 8.5h11l1 11h-13l1-11Z" />
+              <path d="M9 8.5a3 3 0 0 1 6 0" />
+            </svg>
+            <span class="cart-count">0</span>
+          </a>
+          <details class="account-menu">
+            <summary class="icon-button" aria-label="Open account menu">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+                <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+              </svg>
+            </summary>
+            <div class="account-popover">
+              <a href="profile.html">Profile</a>
+              <a href="profile.html#savedDesigns">Saved designs</a>
+            </div>
+          </details>
+        </div>
+        <details class="mobile-menu">
+          <summary class="hamburger-button" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </summary>
+          <nav class="mobile-menu-panel" aria-label="Mobile navigation">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About Us</a>
+            <a aria-current="page" href="builder.html">Cake Designer</a>
+            <a href="checkout.html">Checkout <span class="cart-count menu-count">0</span></a>
+            <a href="profile.html">Profile</a>
+            <a href="profile.html#savedDesigns">Saved designs</a>
+          </nav>
+        </details>
+      </div>
     </header>
 
     <main class="wizard-builder">
@@ -203,6 +236,6 @@
       </section>
     </main>
 
-    <script type="module" src="builder3d.js?v=20260608-hero"></script>
+    <script type="module" src="builder3d.js?v=20260608-nav"></script>
   </body>
 </html>

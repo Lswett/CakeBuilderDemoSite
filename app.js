@@ -254,6 +254,31 @@ function updateGlobalCartCount() {
   });
 }
 
+function initNavigation() {
+  const menus = Array.from(document.querySelectorAll(".site-header details"));
+  if (!menus.length) return;
+
+  document.addEventListener("click", (event) => {
+    menus.forEach((menu) => {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    menus.forEach((menu) => {
+      menu.open = false;
+    });
+  });
+
+  document.querySelectorAll(".mobile-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      const menu = link.closest("details");
+      if (menu) menu.open = false;
+    });
+  });
+}
+
 function applyDesign(next) {
   Object.assign(state, next);
   syncControlsFromState();
@@ -652,6 +677,7 @@ function initProfile() {
 }
 
 updateGlobalCartCount();
+initNavigation();
 initBuilder();
 initCheckout();
 initProfile();
