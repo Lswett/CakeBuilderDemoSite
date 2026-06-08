@@ -1,6 +1,5 @@
 import * as THREE from "https://unpkg.com/three@0.164.1/build/three.module.js";
 
-const EXCHANGE_RATE_THB = 32;
 const CART_KEY = "ctc_mock_cart";
 const SAVED_KEY = "ctc_saved_designs";
 
@@ -53,7 +52,7 @@ const cakeTypes = {
     limit: 5,
     defaults: {
       tiers: 2,
-      flavor: "mango",
+      flavor: "lemon",
       finish: "smooth",
       baseColor: "#fff4df",
       accentColor: "#0f766e",
@@ -81,8 +80,8 @@ const labels = {
   flavor: {
     vanilla: "Vanilla bean",
     redVelvet: "Red velvet",
-    mango: "Thai mango cream",
-    ube: "Ube coconut",
+    lemon: "Lemon cream",
+    caramel: "Salted caramel",
     espresso: "Espresso brownie",
   },
   finish: {
@@ -597,17 +596,17 @@ function calculateEstimate() {
   const typeBase = { wedding: 95, party: 55, custom: 65 }[design.cakeType];
   const tierCost = design.tiers * { wedding: 38, party: 24, custom: 28 }[design.cakeType];
   const decorCost = design.decorations.length * { wedding: 28, party: 12, custom: 16 }[design.cakeType];
-  const flavorCost = { vanilla: 0, redVelvet: 8, mango: 14, ube: 15, espresso: 10 }[design.flavor];
+  const flavorCost = { vanilla: 0, redVelvet: 8, lemon: 10, caramel: 12, espresso: 10 }[design.flavor];
   const finishCost = { smooth: 0, glossy: 10, textured: 8, fondant: 18 }[design.finish];
   const usd = typeBase + tierCost + decorCost + flavorCost + finishCost + (design.message.trim() ? 6 : 0);
   const hours = 1.8 + design.tiers * 0.9 + design.decorations.length * 0.55 + { wedding: 2.5, party: 0.8, custom: 1.2 }[design.cakeType];
-  return { usd, thb: usd * EXCHANGE_RATE_THB, hours };
+  return { usd, hours };
 }
 
 function updateEstimate() {
   const estimate = calculateEstimate();
   document.querySelector("#priceUsd").textContent = `$${estimate.usd.toLocaleString("en-US")}`;
-  document.querySelector("#priceThb").textContent = `THB ${estimate.thb.toLocaleString("en-US")}`;
+  document.querySelector("#priceNote").textContent = "Mock materials and prep estimate";
   document.querySelector("#prepTime").textContent = `${estimate.hours.toFixed(1)} hrs`;
   document.querySelector("#estimateCopy").textContent = `${cakeTypes[design.cakeType].title}, ${design.decorations.length} decor sets`;
   document.querySelector("#previewUsd").textContent = `$${estimate.usd.toLocaleString("en-US")}`;

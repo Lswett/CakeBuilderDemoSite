@@ -6,8 +6,7 @@ Mobile-first static prototype for a premium custom cake builder demo.
 
 - Separate homepage, builder, checkout, and profile pages
 - Guided cake design questionnaire with a 3D preview and preset decoration rules
-- Live mock pricing in USD and THB
-- Fixed exchange rate: `1 USD = 32 THB`
+- Live mock pricing in USD
 - Estimated preparation time based on tiers, decorations, and complexity
 - Mock checkout flow and fake request confirmation
 - Mock user/profile area with test customer data

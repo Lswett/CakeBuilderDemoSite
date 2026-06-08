@@ -141,7 +141,7 @@ a {
 }
 
 .hero-copy {
-  max-width: 720px;
+  max-width: 640px;
 }
 
 .eyebrow {
@@ -234,7 +234,7 @@ p {
 
 .poster-cake {
   position: relative;
-  min-height: clamp(560px, 76vh, 680px);
+  min-height: clamp(500px, 68vh, 620px);
   overflow: hidden;
   border: 1px solid rgba(255, 243, 223, 0.22);
   border-radius: 8px;
@@ -977,9 +977,27 @@ output {
     display: flex;
   }
 
-  .hero,
   .intro-band {
     grid-template-columns: minmax(0, 1fr) minmax(340px, 0.82fr);
+  }
+
+  .hero-home {
+    grid-template-columns: minmax(340px, 0.9fr) minmax(320px, 0.72fr);
+    gap: clamp(28px, 5vw, 72px);
+  }
+
+  .hero-home h1 {
+    max-width: 10.8ch;
+    font-size: clamp(58px, 7vw, 90px);
+  }
+
+  .hero-home p:not(.eyebrow) {
+    max-width: 54ch;
+    font-size: clamp(17px, 1.7vw, 19px);
+  }
+
+  .hero-home .prototype-note {
+    max-width: 54ch;
   }
 
   .story-grid,
@@ -1802,7 +1820,7 @@ output {
   }
 
   .poster-image {
-    object-position: center 56%;
+    object-position: center 68%;
   }
 
   .wizard-progress {

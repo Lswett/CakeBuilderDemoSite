@@ -1,4 +1,3 @@
-const EXCHANGE_RATE_THB = 32;
 const CART_KEY = "ctc_mock_cart";
 const SAVED_KEY = "ctc_saved_designs";
 
@@ -33,14 +32,14 @@ const labels = {
   flavor: {
     vanilla: "Vanilla bean",
     redVelvet: "Red velvet",
-    mango: "Thai mango cream",
-    ube: "Ube coconut",
+    lemon: "Lemon cream",
+    caramel: "Salted caramel",
     espresso: "Espresso brownie",
   },
   filling: {
     cream: "Light cream",
     jam: "Cherry jam",
-    mangoCurd: "Mango curd",
+    lemonCurd: "Lemon curd",
     ganache: "Dark ganache",
   },
   shape: {
@@ -95,8 +94,8 @@ const costs = {
   diameterInch: 4.25,
   tierHeight: 5.5,
   shape: { round: 0, square: 8, heart: 18, cloud: 22 },
-  flavor: { vanilla: 0, redVelvet: 8, mango: 14, ube: 15, espresso: 11 },
-  filling: { cream: 0, jam: 7, mangoCurd: 12, ganache: 10 },
+  flavor: { vanilla: 0, redVelvet: 8, lemon: 10, caramel: 12, espresso: 11 },
+  filling: { cream: 0, jam: 7, lemonCurd: 10, ganache: 10 },
   complexity: { clean: 0, styled: 24, chaos: 42, couture: 68 },
   occasion: { daily: 0, birthday: 8, wedding: 55, launch: 22, houseParty: 12 },
   decoration: 8,
@@ -149,21 +148,21 @@ const presetData = {
     complexity: "chaos",
     decorations: ["cherries", "bows", "stickers", "stars"],
   },
-  thai: {
+  citrus: {
     ...defaultDesign,
     tiers: 2,
     diameter: 10,
     tierHeight: 3,
     shape: "cloud",
-    flavor: "mango",
-    filling: "mangoCurd",
+    flavor: "lemon",
+    filling: "lemonCurd",
     frosting: "#fff4df",
     drip: "#f7c948",
     gloss: 62,
     piping: 46,
     sprinkles: 25,
     topperScale: 110,
-    message: "Mango mood",
+    message: "Bright mood",
     occasion: "daily",
     complexity: "styled",
     decorations: ["stars", "pearls"],
@@ -207,10 +206,6 @@ function formatUsd(value) {
   }).format(value);
 }
 
-function formatThb(value) {
-  return `THB ${Math.round(value).toLocaleString("en-US")}`;
-}
-
 function calculateEstimate(design = state) {
   const fineDetail =
     design.gloss * 0.08 +
@@ -248,7 +243,6 @@ function calculateEstimate(design = state) {
 
   return {
     usd: roundedUsd,
-    thb: roundedUsd * EXCHANGE_RATE_THB,
     hours,
   };
 }
@@ -418,12 +412,10 @@ function updateOutputs() {
 function updateEstimate() {
   const estimate = calculateEstimate();
   const priceUsd = document.querySelector("#priceUsd");
-  const priceThb = document.querySelector("#priceThb");
   const prepTime = document.querySelector("#prepTime");
   const estimateCopy = document.querySelector("#estimateCopy");
 
   if (priceUsd) priceUsd.textContent = formatUsd(estimate.usd);
-  if (priceThb) priceThb.textContent = formatThb(estimate.thb);
   if (prepTime) prepTime.textContent = `${estimate.hours.toFixed(1)} hrs`;
   if (estimateCopy) {
     estimateCopy.textContent = `${labels.complexity[state.complexity]} build, ${state.decorations.length} decor sets, ${labels.occasion[state.occasion]}`;
@@ -431,7 +423,10 @@ function updateEstimate() {
 }
 
 function designSummary(design) {
-  return `${design.tiers} tier${design.tiers === 1 ? "" : "s"} / ${labels.shape[design.shape]} / ${labels.flavor[design.flavor]} / ${labels.complexity[design.complexity]}`;
+  const flavor = labels.flavor[design.flavor] || "Lemon cream";
+  const shape = labels.shape[design.shape] || "Round";
+  const complexity = labels.complexity[design.complexity] || "Styled";
+  return `${design.tiers} tier${design.tiers === 1 ? "" : "s"} / ${shape} / ${flavor} / ${complexity}`;
 }
 
 function addCurrentDesignToCart() {
@@ -468,7 +463,7 @@ function initBuilder() {
   if (!document.querySelector("#cakeStack")) return;
 
   const urlStyle = new URLSearchParams(window.location.search).get("style");
-  const presetFromUrl = urlStyle === "wedding" ? "wedding" : urlStyle === "party" ? "party" : urlStyle === "launch" ? "signature" : urlStyle === "daily" ? "thai" : null;
+  const presetFromUrl = urlStyle === "wedding" ? "wedding" : urlStyle === "party" ? "party" : urlStyle === "launch" ? "signature" : urlStyle === "daily" ? "citrus" : null;
   if (presetFromUrl) Object.assign(state, presetData[presetFromUrl]);
 
   syncControlsFromState();
@@ -570,7 +565,6 @@ function renderCheckout() {
 
   document.querySelector("#summaryItems").textContent = String(items.length);
   document.querySelector("#summaryUsd").textContent = formatUsd(totalUsd);
-  document.querySelector("#summaryThb").textContent = formatThb(totalUsd * EXCHANGE_RATE_THB);
   document.querySelector("#summaryPrep").textContent = `${totalHours.toFixed(1)} hrs`;
 
   if (!items.length) {
@@ -589,7 +583,6 @@ function renderCheckout() {
           </div>
           <div class="mini-quote">
             <strong>${formatUsd(item.estimate.usd)}</strong>
-            <span>${formatThb(item.estimate.thb)}</span>
             <span>${item.estimate.hours.toFixed(1)} hrs</span>
           </div>
           <button class="tool-button" type="button" data-remove-cart="${item.id}">Remove</button>
@@ -645,7 +638,7 @@ function initProfile() {
           <div class="saved-design">
             <strong>${escapeHtml(item.name)}</strong>
             <span>${escapeHtml(designSummary(item.design))}</span>
-            <span>${formatUsd(item.estimate.usd)} / ${formatThb(item.estimate.thb)}</span>
+            <span>${formatUsd(item.estimate.usd)}</span>
           </div>
         `
       )
