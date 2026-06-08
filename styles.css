@@ -133,14 +133,17 @@ a {
 }
 
 .hero-home {
-  min-height: calc(100vh - 68px);
-  background:
-    linear-gradient(115deg, rgba(8, 47, 73, 0.96), rgba(15, 118, 110, 0.9)),
-    radial-gradient(circle at 74% 18%, rgba(213, 154, 95, 0.28), transparent 31%);
+  position: relative;
+  min-height: calc(100svh - 68px);
+  overflow: hidden;
+  isolation: isolate;
+  background: #0a3c45;
   color: var(--cream);
 }
 
 .hero-copy {
+  position: relative;
+  z-index: 2;
   max-width: 640px;
 }
 
@@ -233,14 +236,17 @@ p {
 }
 
 .poster-cake {
-  position: relative;
-  min-height: clamp(500px, 68vh, 620px);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  min-height: 100%;
   overflow: hidden;
-  border: 1px solid rgba(255, 243, 223, 0.22);
-  border-radius: 8px;
+  border: 0;
+  border-radius: 0;
   background: #08333c;
-  box-shadow: 0 34px 70px rgba(2, 28, 38, 0.36), 0 12px 22px rgba(213, 154, 95, 0.1);
+  box-shadow: none;
   isolation: isolate;
+  pointer-events: none;
 }
 
 .poster-cake::after {
@@ -249,8 +255,9 @@ p {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(3, 27, 34, 0.08), transparent 34%, rgba(3, 27, 34, 0.16)),
-    radial-gradient(circle at 50% 82%, transparent 0 36%, rgba(3, 27, 34, 0.2) 72%);
+    linear-gradient(90deg, rgba(6, 34, 45, 0.96) 0%, rgba(8, 48, 58, 0.9) 34%, rgba(9, 74, 76, 0.56) 58%, rgba(9, 74, 76, 0.18) 100%),
+    linear-gradient(180deg, rgba(3, 27, 34, 0.18), transparent 34%, rgba(3, 27, 34, 0.18)),
+    radial-gradient(circle at 80% 72%, rgba(213, 154, 95, 0.12), transparent 34%);
   pointer-events: none;
 }
 
@@ -261,9 +268,9 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 42%;
-  transform: scale(1.015);
-  filter: saturate(1.06) contrast(1.03);
+  object-position: center 62%;
+  transform: scale(1.2) translateX(10%);
+  filter: saturate(1.04) contrast(1.03) brightness(0.92);
 }
 
 .poster-script {
@@ -982,13 +989,14 @@ output {
   }
 
   .hero-home {
-    grid-template-columns: minmax(340px, 0.9fr) minmax(320px, 0.72fr);
-    gap: clamp(28px, 5vw, 72px);
+    grid-template-columns: minmax(340px, 640px);
+    align-content: center;
+    padding-block: clamp(72px, 11vh, 120px);
   }
 
   .hero-home h1 {
     max-width: 10.8ch;
-    font-size: clamp(58px, 7vw, 90px);
+    font-size: clamp(56px, 6vw, 86px);
   }
 
   .hero-home p:not(.eyebrow) {
@@ -1812,15 +1820,22 @@ output {
   }
 
   .hero-home {
-    min-height: auto;
+    min-height: calc(100svh - 93px);
   }
 
   .poster-cake {
-    min-height: 520px;
+    min-height: 100%;
   }
 
   .poster-image {
-    object-position: center 68%;
+    object-position: center 70%;
+    transform: scale(1.1) translateX(0);
+  }
+
+  .poster-cake::after {
+    background:
+      linear-gradient(180deg, rgba(6, 34, 45, 0.92) 0%, rgba(8, 48, 58, 0.84) 42%, rgba(8, 48, 58, 0.58) 72%, rgba(8, 48, 58, 0.36) 100%),
+      radial-gradient(circle at 70% 82%, rgba(213, 154, 95, 0.12), transparent 34%);
   }
 
   .wizard-progress {
