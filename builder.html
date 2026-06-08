@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Build a Cake | CakeBuilder Demo</title>
+    <meta
+      name="description"
+      content="Guided CakeBuilder Demo questionnaire with 3D cake preview, safe decoration placement, and mock quote."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="builder">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="CakeBuilder Demo home">
+        <span class="brand-mark">CB</span>
+        <span class="brand-text">CakeBuilder Demo</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a aria-current="page" href="builder.html">Build</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+      <a class="bag-button" href="checkout.html" aria-label="Open checkout">
+        <span class="cart-count">0</span>
+        Bag
+      </a>
+    </header>
+
+    <main class="wizard-builder">
+      <section class="builder-intro">
+        <div>
+          <p class="eyebrow">Cake builder</p>
+          <h1>Let's get started.</h1>
+        </div>
+        <p>
+          Answer one question at a time. The 3D cake updates from those answers, so the final
+          design stays clean instead of becoming a free-for-all.
+        </p>
+        <div class="builder-badges" aria-label="Builder details">
+          <span>Preset-based</span>
+          <span>Mobile-first</span>
+          <span>USD + THB quote</span>
+        </div>
+      </section>
+
+      <section class="wizard-grid">
+        <aside class="wizard-progress" aria-label="Builder progress">
+          <div class="progress-step active" data-progress-step="0"><span>1</span> Type</div>
+          <div class="progress-step" data-progress-step="1"><span>2</span> Size</div>
+          <div class="progress-step" data-progress-step="2"><span>3</span> Flavor</div>
+          <div class="progress-step" data-progress-step="3"><span>4</span> Colors</div>
+          <div class="progress-step" data-progress-step="4"><span>5</span> Decor</div>
+          <div class="progress-step" data-progress-step="5"><span>6</span> Message</div>
+          <div class="progress-step" data-progress-step="6"><span>7</span> Review</div>
+        </aside>
+
+        <section class="preview-panel wizard-preview" aria-label="3D cake preview">
+          <div class="preview-title">
+            <div>
+              <p class="eyebrow">Live preview</p>
+              <h2 id="previewTitle">Wedding cake</h2>
+            </div>
+            <button class="secondary-action" id="resetScene" type="button">Reset</button>
+          </div>
+          <div class="preview-quote" aria-live="polite">
+            <span id="previewUsd">$0</span>
+            <span id="previewPrep">0 hrs</span>
+          </div>
+          <canvas id="cakeCanvas" aria-label="3D cake preview"></canvas>
+          <div class="viewport-help">
+            <span>Drag to rotate</span>
+            <span>Scroll to zoom</span>
+            <span>Questionnaire builds the cake</span>
+          </div>
+        </section>
+
+        <aside class="wizard-card" aria-live="polite">
+          <form id="guidedForm">
+            <section class="wizard-step active" data-step="0">
+              <p class="eyebrow">Question 1 of 7</p>
+              <h2>What kind of cake?</h2>
+              <div class="cake-type-grid" role="radiogroup" aria-label="Cake type">
+                <button class="cake-type-card active" type="button" data-cake-type="wedding" role="radio" aria-checked="true">
+                  <strong>Wedding</strong>
+                  <span>Elegant tiers, flowers, lace, pearls, gold details.</span>
+                </button>
+                <button class="cake-type-card" type="button" data-cake-type="party" role="radio" aria-checked="false">
+                  <strong>Party</strong>
+                  <span>Bright colors, candles, cherries, sprinkles, loud toppers.</span>
+                </button>
+                <button class="cake-type-card" type="button" data-cake-type="custom" role="radio" aria-checked="false">
+                  <strong>Custom</strong>
+                  <span>A flexible starting point for brand launches and one-off ideas.</span>
+                </button>
+              </div>
+              <div class="type-note" id="typeNote">
+                Wedding cakes start from a polished default preview. Pick up to 2 decoration sets.
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="1">
+              <p class="eyebrow">Question 2 of 7</p>
+              <h2>How many tiers?</h2>
+              <label>
+                Tier count
+                <select id="tiers">
+                  <option value="1">1 tier</option>
+                  <option value="2">2 tiers</option>
+                  <option value="3" selected>3 tiers</option>
+                  <option value="4">4 tiers</option>
+                </select>
+              </label>
+              <p class="question-hint">More tiers look formal, but the top tier gets smaller, so the message limit becomes shorter.</p>
+            </section>
+
+            <section class="wizard-step" data-step="2">
+              <p class="eyebrow">Question 3 of 7</p>
+              <h2>Choose flavor and finish.</h2>
+              <div class="control-grid">
+                <label>
+                  Cake flavor
+                  <select id="flavor">
+                    <option value="vanilla">Vanilla bean</option>
+                    <option value="redVelvet">Red velvet</option>
+                    <option value="mango">Thai mango cream</option>
+                    <option value="ube">Ube coconut</option>
+                    <option value="espresso">Espresso brownie</option>
+                  </select>
+                </label>
+                <label>
+                  Finish
+                  <select id="finish">
+                    <option value="smooth">Smooth buttercream</option>
+                    <option value="glossy">Glossy glaze</option>
+                    <option value="textured">Textured frosting</option>
+                    <option value="fondant">Fondant clean edge</option>
+                  </select>
+                </label>
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="3">
+              <p class="eyebrow">Question 4 of 7</p>
+              <h2>Pick the colors.</h2>
+              <div class="color-row">
+                <label>Base color <input id="baseColor" type="color" value="#fff1d8" /></label>
+                <label>Accent color <input id="accentColor" type="color" value="#d9a441" /></label>
+              </div>
+            </section>
+
+            <section class="wizard-step" data-step="4">
+              <p class="eyebrow">Question 5 of 7</p>
+              <h2>Choose decorations.</h2>
+              <fieldset class="option-box">
+                <legend id="decorLegend">Wedding cake decorations: choose up to 2</legend>
+                <div class="choice-list" id="decorationChoices"></div>
+                <p class="choice-limit" id="choiceLimit">0 of 2 selected</p>
+                <p class="question-hint" id="decorHint">Preset decoration zones keep toppers, flowers, and edge details from overlapping.</p>
+              </fieldset>
+            </section>
+
+            <section class="wizard-step" data-step="5">
+              <p class="eyebrow">Question 6 of 7</p>
+              <h2>Add a short message.</h2>
+              <label>
+                Cake message
+                <input id="message" maxlength="16" value="Forever" />
+                <small class="message-help" id="messageHelp">7 of 16 characters. More tiers leave less room on the top tier.</small>
+              </label>
+            </section>
+
+            <section class="wizard-step" data-step="6">
+              <p class="eyebrow">Question 7 of 7</p>
+              <h2>Review the quote.</h2>
+              <div class="review-list" id="reviewList"></div>
+              <aside class="estimate" aria-live="polite">
+                <div>
+                  <span>Estimated price</span>
+                  <strong id="priceUsd">$0</strong>
+                  <small id="priceThb">THB 0</small>
+                </div>
+                <div>
+                  <span>Estimated prep</span>
+                  <strong id="prepTime">0 hrs</strong>
+                  <small id="estimateCopy">Guided mock quote</small>
+                </div>
+              </aside>
+              <div class="action-row">
+                <button class="secondary-action" id="saveDesign" type="button">Save design</button>
+                <button class="primary-button" id="addToCheckout" type="button">Add to checkout</button>
+              </div>
+            </section>
+
+          <div class="wizard-actions">
+              <button class="secondary-action" id="prevStep" type="button">Back</button>
+              <button class="secondary-action ghost-action" id="jumpReview" type="button">Review</button>
+              <button class="primary-button" id="nextStep" type="button">Next</button>
+            </div>
+          </form>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="builder3d.js"></script>
+  </body>
+</html>

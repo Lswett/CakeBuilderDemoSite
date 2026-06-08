@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mock Profile | CakeBuilder Demo</title>
+    <meta name="description" content="Mock customer profile and saved cake design data for CakeBuilder Demo." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="profile">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="CakeBuilder Demo home">
+        <span class="brand-mark">CB</span>
+        <span class="brand-text">CakeBuilder Demo</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="builder.html">Build</a>
+        <a href="checkout.html">Checkout</a>
+        <a aria-current="page" href="profile.html">Profile</a>
+      </nav>
+      <a class="bag-button" href="checkout.html" aria-label="Open checkout">
+        <span class="cart-count">0</span>
+        Bag
+      </a>
+    </header>
+
+    <main class="page-shell">
+      <section class="profile-hero">
+        <div class="profile-card hero-card">
+          <div class="avatar">F</div>
+          <div>
+            <p class="eyebrow">Test feature</p>
+            <h1>Faeye The Wise</h1>
+            <p>Demo celebration planner</p>
+          </div>
+          <span class="status-pill">Mock customer</span>
+        </div>
+      </section>
+
+      <section class="profile-layout">
+        <article class="data-panel">
+          <h2>Saved preferences</h2>
+          <p>Low sweetness, Thai mango cream, ivory-teal palette, no peanut garnish. These are mock fields for a future account system.</p>
+        </article>
+        <article class="data-panel">
+          <h2>Contact shell</h2>
+          <p>Demo delivery area: Bangkok. Real names, addresses, and phone numbers would stay hidden until login is built.</p>
+        </article>
+        <article class="data-panel">
+          <h2>Saved designs</h2>
+          <div id="savedDesigns">No design saved yet.</div>
+          <button class="secondary-action full" id="clearSaved" type="button">Clear saved demos</button>
+        </article>
+        <article class="data-panel">
+          <h2>Test order history</h2>
+          <p>3 mock requests, 1 draft quote, 0 real payments.</p>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

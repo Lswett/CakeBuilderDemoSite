@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CakeBuilder Demo | Custom Cake Design Prototype</title>
+    <meta
+      name="description"
+      content="CakeBuilder Demo is a polished static prototype with a guided cake builder, checkout preview, and mock profile UI."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="home">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="CakeBuilder Demo home">
+        <span class="brand-mark">CB</span>
+        <span class="brand-text">CakeBuilder Demo</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a aria-current="page" href="index.html">Home</a>
+        <a href="builder.html">Build</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+      <a class="bag-button" href="checkout.html" aria-label="Open checkout">
+        <span class="cart-count">0</span>
+        Bag
+      </a>
+    </header>
+
+    <main>
+      <section class="hero hero-home">
+        <div class="hero-copy">
+          <p class="eyebrow">Something sweet is baking</p>
+          <h1><span>CakeBuilder</span><span>Demo</span></h1>
+          <p>
+            Custom cakes for moments that do not need permission to be celebrated. This mock
+            studio blends premium event design with playful, social-first cakes for weddings,
+            house parties, launches, and everyday wins.
+          </p>
+          <div class="prototype-note">Static product demo: no payment, no backend, no real order submission.</div>
+          <div class="hero-actions">
+            <a class="primary-button" href="builder.html">Open cake designer</a>
+            <a class="secondary-button" href="checkout.html">Review mock checkout</a>
+          </div>
+        </div>
+        <div class="poster-cake" aria-label="Dimensional cake builder demo poster">
+          <img
+            class="poster-image"
+            src="assets/homepage-cake-poster.png"
+            alt=""
+            decoding="async"
+            fetchpriority="high"
+          />
+          <div class="poster-script">Design<br />Preview</div>
+          <div class="poster-tag">#CAKEBUILDERDEMO</div>
+        </div>
+      </section>
+
+      <section class="intro-band">
+        <div>
+          <p class="eyebrow">Every moment worth celebrating</p>
+          <h2>A cake studio with a design-app ordering flow.</h2>
+        </div>
+        <p>
+          The site is still a prototype, so the writing and data are intentionally easy to
+          replace. The experience is built around a clear funnel: learn the brand, design the
+          cake, review the quote, and submit a mock request when the backend is ready.
+        </p>
+      </section>
+
+      <section class="demo-metrics" aria-label="Demo capabilities">
+        <div>
+          <strong>4</strong>
+          <span>static pages</span>
+        </div>
+        <div>
+          <strong>3D</strong>
+          <span>guided preview</span>
+        </div>
+        <div>
+          <strong>USD/THB</strong>
+          <span>mock pricing</span>
+        </div>
+        <div>
+          <strong>0</strong>
+          <span>payment integrations</span>
+        </div>
+      </section>
+
+      <section class="process-band" aria-label="Prototype flow">
+        <article>
+          <span>1</span>
+          <h3>Pick the occasion</h3>
+          <p>Wedding, party, or custom starts the questionnaire with preset rules.</p>
+        </article>
+        <article>
+          <span>2</span>
+          <h3>Answer guided questions</h3>
+          <p>Each choice updates a 3D preview and keeps decorations from fighting each other.</p>
+        </article>
+        <article>
+          <span>3</span>
+          <h3>Review a mock quote</h3>
+          <p>USD and Thai baht estimates are generated from tiers, labor, and decoration count.</p>
+        </article>
+      </section>
+
+      <section class="split-story">
+        <div class="section-heading">
+          <p class="eyebrow">What they do</p>
+          <h2>Premium enough for events. Weird enough for the internet.</h2>
+        </div>
+        <div class="story-grid">
+          <article>
+            <span class="feature-chip">01</span>
+            <h3>Custom Builds</h3>
+            <p>Shape, size, finish, color, garnish, message, and complexity are all designed around the customer.</p>
+          </article>
+          <article>
+            <span class="feature-chip">02</span>
+            <h3>Quote Transparency</h3>
+            <p>Mock formulas show material cost, labor complexity, prep time, and pricing in USD and THB.</p>
+          </article>
+          <article>
+            <span class="feature-chip">03</span>
+            <h3>Saved Profiles</h3>
+            <p>Test profile surfaces preferences, allergens, saved designs, and order history for future backend work.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="occasion-strip" aria-label="Cake occasions">
+        <a href="builder.html?style=wedding">Wedding polish</a>
+        <a href="builder.html?style=party">House party chaos</a>
+        <a href="builder.html?style=custom">Brand launch</a>
+        <a href="builder.html?style=custom">No occasion cake</a>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
