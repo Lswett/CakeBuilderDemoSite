@@ -91,23 +91,6 @@ const labels = {
   },
 };
 
-const costs = {
-  tierBase: 31,
-  diameterInch: 4.25,
-  tierHeight: 5.5,
-  shape: { round: 0, square: 8, heart: 18, cloud: 22 },
-  flavor: { vanilla: 0, redVelvet: 8, lemon: 10, caramel: 12, espresso: 11 },
-  filling: { cream: 0, jam: 7, lemonCurd: 10, ganache: 10 },
-  complexity: { clean: 0, styled: 24, chaos: 42, couture: 68 },
-  occasion: { daily: 0, birthday: 8, wedding: 55, launch: 22, houseParty: 12 },
-  decoration: 8,
-};
-
-const prepBase = {
-  complexity: { clean: 0.8, styled: 2.1, chaos: 3.4, couture: 5.5 },
-  occasion: { daily: 0, birthday: 0.5, wedding: 3.5, launch: 1.2, houseParty: 0.7 },
-};
-
 const presetData = {
   signature: {
     ...defaultDesign,
@@ -201,52 +184,11 @@ function savedDesigns() {
 }
 
 function formatUsd(value) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(value);
+  return window.CakeBuilderConfig.money(value);
 }
 
 function calculateEstimate(design = state) {
-  const fineDetail =
-    design.gloss * 0.08 +
-    design.piping * 0.13 +
-    design.sprinkles * 0.28 +
-    design.topperScale * 0.07 +
-    design.messageCurve * 0.05;
-
-  const usd =
-    design.tiers * costs.tierBase +
-    design.diameter * costs.diameterInch +
-    design.tierHeight * design.tiers * costs.tierHeight +
-    costs.shape[design.shape] +
-    costs.flavor[design.flavor] +
-    costs.filling[design.filling] +
-    costs.complexity[design.complexity] +
-    costs.occasion[design.occasion] +
-    design.decorations.length * costs.decoration +
-    fineDetail +
-    (design.message.trim() ? 6 : 0);
-
-  const hours =
-    1.6 +
-    design.tiers * 1.15 +
-    design.tierHeight * 0.32 +
-    design.diameter * 0.08 +
-    prepBase.complexity[design.complexity] +
-    prepBase.occasion[design.occasion] +
-    design.decorations.length * 0.42 +
-    design.piping * 0.018 +
-    design.sprinkles * 0.012 +
-    (design.message.trim() ? 0.25 : 0);
-
-  const roundedUsd = Math.round(usd);
-
-  return {
-    usd: roundedUsd,
-    hours,
-  };
+  return window.CakeBuilderConfig.calculateCakeEstimate(design);
 }
 
 function updateGlobalCartCount() {
@@ -715,15 +657,7 @@ function checkoutItemServes(item) {
 }
 
 function checkoutPricing(items = cart()) {
-  const subtotal = items.reduce((sum, item) => sum + Number(item.estimate?.usd || 0), 0);
-  const deliveryFee = subtotal ? 10 : 0;
-  const tax = subtotal ? Math.round((subtotal + deliveryFee) * 0.086 * 100) / 100 : 0;
-  return {
-    subtotal,
-    deliveryFee,
-    tax,
-    total: Math.round((subtotal + deliveryFee + tax) * 100) / 100,
-  };
+  return window.CakeBuilderConfig.calculateCheckoutPricing(items);
 }
 
 function checkoutThumbClass(index) {

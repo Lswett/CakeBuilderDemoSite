@@ -2,6 +2,7 @@ import * as THREE from "https://unpkg.com/three@0.164.1/build/three.module.js";
 
 const CART_KEY = "ctc_mock_cart";
 const SAVED_KEY = "ctc_saved_designs";
+const { calculateCakeEstimate, money } = window.CakeBuilderConfig;
 
 const cakeTypes = {
   wedding: {
@@ -618,23 +619,16 @@ function rebuildScene() {
 }
 
 function calculateEstimate() {
-  const typeBase = { wedding: 95, party: 55, custom: 65 }[design.cakeType];
-  const tierCost = design.tiers * { wedding: 38, party: 24, custom: 28 }[design.cakeType];
-  const decorCost = design.decorations.length * { wedding: 28, party: 12, custom: 16 }[design.cakeType];
-  const flavorCost = { vanilla: 0, redVelvet: 8, lemon: 10, caramel: 12, espresso: 10 }[design.flavor];
-  const finishCost = { smooth: 0, glossy: 10, textured: 8, fondant: 18 }[design.finish];
-  const usd = typeBase + tierCost + decorCost + flavorCost + finishCost + (design.message.trim() ? 6 : 0);
-  const hours = 1.8 + design.tiers * 0.9 + design.decorations.length * 0.55 + { wedding: 2.5, party: 0.8, custom: 1.2 }[design.cakeType];
-  return { usd, hours };
+  return calculateCakeEstimate(design);
 }
 
 function updateEstimate() {
   const estimate = calculateEstimate();
-  document.querySelector("#priceUsd").textContent = `$${estimate.usd.toLocaleString("en-US")}`;
+  document.querySelector("#priceUsd").textContent = money(estimate.usd);
   document.querySelector("#priceNote").textContent = "Mock materials and prep estimate";
   document.querySelector("#prepTime").textContent = `${estimate.hours.toFixed(1)} hrs`;
   document.querySelector("#estimateCopy").textContent = `${cakeTypes[design.cakeType].title}, ${design.decorations.length} decor sets`;
-  document.querySelector("#previewUsd").textContent = `$${estimate.usd.toLocaleString("en-US")}`;
+  document.querySelector("#previewUsd").textContent = money(estimate.usd);
   document.querySelector("#previewPrep").textContent = `${estimate.hours.toFixed(1)} hrs`;
   renderReview();
 }
